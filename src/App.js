@@ -18,15 +18,18 @@ const faqs = [
 
 export default function App() {
   return (
-    <div>
-      <Accordion data={faqs} />
-    </div>
+    <>
+      <h1 className="header">FAQ</h1>
+      <div>
+        <Accordion data={faqs} />
+      </div>
+    </>
   );
 }
 
 function Accordion({ data }) {
   return (
-    <div>
+    <div className="accordion">
       {data.map((faq, i) => (
         <AccordionItem num={i} title={faq.title} text={faq.text} />
       ))}
@@ -42,7 +45,7 @@ function AccordionItem({ num, title, text }) {
   }
 
   return (
-    <div className="item">
+    <div className={isOpen ? "open item" : "item"}>
       <p className="number">{num < 9 ? `0${num + 1}` : num + 1}</p>
       <p className="title">{title}</p>
       <p className="icon" onClick={handleToggle}>
